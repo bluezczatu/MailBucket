@@ -36,7 +36,7 @@ npm install mailbucket
 pnpm install mailbucket
 ```
 
-# Code
+### Code
 ```typescript
 import { MailBucket } from "mailbucket"
 
@@ -71,4 +71,4 @@ async function main() {
 main().catch(console.error);
 ```
 
-# Powered by [hckrteam.com](https://hckrteam.com)
+### Powered by [hckrteam.com](https://hckrteam.com)
