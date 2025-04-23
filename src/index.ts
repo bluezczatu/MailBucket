@@ -24,10 +24,10 @@ export class MailBucket {
 
     public registerProvider(provider: IEmailProvider): void {
         if (this.providers.has(provider.providerName)) {
-            console.warn(`Provider "${provider.providerName}" is already registered. Overwriting.`);
+            //console.warn(`Provider "${provider.providerName}" is already registered. Overwriting.`);
         }
         this.providers.set(provider.providerName, provider);
-         console.log(`Registered provider: ${provider.providerName}`);
+         //console.log(`Registered provider: ${provider.providerName}`);
     }
 
     public getAvailableProviders(): string[] {
@@ -46,7 +46,7 @@ export class MailBucket {
             if (!provider) {
                 return { success: false, message: `Provider "${providerName}" not found.` };
             }
-             console.log(`Using specified provider: ${providerName}`);
+             //console.log(`Using specified provider: ${providerName}`);
         } else {
             const availableProviders = this.getAvailableProviders();
             if (availableProviders.length === 0) {
@@ -54,19 +54,19 @@ export class MailBucket {
             }
             const randomProviderName = availableProviders[Math.floor(Math.random() * availableProviders.length)];
             provider = this.getProvider(randomProviderName);
-             console.log(`Using random provider: ${randomProviderName}`);
+             //console.log(`Using random provider: ${randomProviderName}`);
             if (!provider) {
                  return { success: false, message: `Failed to get random provider instance for "${randomProviderName}".` };
             }
         }
 
         try {
-            console.log(`Creating account using ${provider.providerName}...`);
+            //console.log(`Creating account using ${provider.providerName}...`);
             const result = await provider.createAccount();
              if(result.success) {
-                console.log(`Account created: ${result.data?.address} via ${provider.providerName}`);
+                //console.log(`Account created: ${result.data?.address} via ${provider.providerName}`);
              } else {
-                 console.error(`Failed to create account via ${provider.providerName}: ${result.message}`);
+                //console.error(`Failed to create account via ${provider.providerName}: ${result.message}`);
              }
             return result;
         } catch (error: any) {
@@ -80,7 +80,7 @@ export class MailBucket {
         if (!provider) {
             return { success: false, message: `Provider "${account.providerName}" associated with this account not found.` };
         }
-        console.log(`Fetching messages for ${account.address} via ${provider.providerName}...`);
+        //console.log(`Fetching messages for ${account.address} via ${provider.providerName}...`);
         return provider.getMessages(account);
     }
 
@@ -89,7 +89,7 @@ export class MailBucket {
          if (!provider) {
             return { success: false, message: `Provider "${account.providerName}" associated with this account not found.` };
         }
-         console.log(`Fetching message ${messageId} for ${account.address} via ${provider.providerName}...`);
+        //console.log(`Fetching message ${messageId} for ${account.address} via ${provider.providerName}...`);
         return provider.getMessage(account, messageId);
     }
 
@@ -101,7 +101,7 @@ export class MailBucket {
          if (!provider.deleteMessage) {
              return { success: false, message: `Provider "${account.providerName}" does not support deleting messages.` };
         }
-         console.log(`Deleting message ${messageId} for ${account.address} via ${provider.providerName}...`);
+        //console.log(`Deleting message ${messageId} for ${account.address} via ${provider.providerName}...`);
         return provider.deleteMessage(account, messageId);
     }
 
@@ -113,7 +113,7 @@ export class MailBucket {
          if (!provider.deleteAccount) {
              return { success: false, message: `Provider "${account.providerName}" does not support deleting accounts.` };
         }
-         console.log(`Deleting account ${account.address} via ${provider.providerName}...`);
+        //console.log(`Deleting account ${account.address} via ${provider.providerName}...`);
         return provider.deleteAccount(account);
     }
 }

@@ -68,7 +68,7 @@ export async function makeRequest<T>(
 
         const expectedStatuses: any = Array.isArray(expectedStatus) ? expectedStatus : [expectedStatus];
         if (!expectedStatuses.includes(response.status)) {
-            console.warn(`Received status ${response.status} but expected ${expectedStatuses.join('/')} for ${options.method} ${url}`);
+            //console.warn(`Received status ${response.status} but expected ${expectedStatuses.join('/')} for ${options.method} ${url}`);
         }
 
         return {

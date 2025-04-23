@@ -35,3 +35,40 @@ npm install mailbucket
 # or
 pnpm install mailbucket
 ```
+
+# Code
+```typescript
+import { MailBucket } from "mailbucket"
+
+async function main() {
+    const client = new MailBucket();
+
+    console.log("Available providers:", client.getAvailableProviders()); // Or create using a specific provider client.createAccount(<provider>);
+
+    let accountResponse = await client.createAccount();
+
+    if (!accountResponse.success || !accountResponse.data) { console.error("Failed to create account:", accountResponse.message); return; }
+    console.log(`Created Account: ${accountResponse.data.address} (Provider: ${accountResponse.data.providerName})`);
+
+    console.log("Waiting for emails... Check your inbox:", accountResponse.data.address);
+    await new Promise(resolve => setTimeout(resolve, 30000));
+
+    const messagesResponse = await client.getMessages(accountResponse.data);
+    if (!messagesResponse.success || !messagesResponse.data) { console.error("Failed to get messages:", messagesResponse.message); return; }
+    if (!messagesResponse.data[0]){ console.log("No messages for:", accountResponse.data.address); return; }
+
+    const messageDetailResponse = await client.getMessage(accountResponse.data, messagesResponse.data[0].id);
+    if (!messageDetailResponse.success || !messageDetailResponse.data) { return }
+
+    console.log("Subject:", messageDetailResponse.data.subject);
+    console.log("From:", messageDetailResponse.data.from);
+    console.log("Body (HTML snippet):", messageDetailResponse.data.bodyHtml?.substring(0, 200) || 'N/A');
+    console.log("Body (Text snippet):", messageDetailResponse.data.bodyText?.substring(0, 200) || 'N/A');
+
+    console.log(messageDetailResponse.data)
+}
+
+main().catch(console.error);
+```
+
+# Powered by [hckrteam.com](https://hckrteam.com)
