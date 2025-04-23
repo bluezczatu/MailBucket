@@ -1,5 +1,5 @@
 {
-  "name": "@hckrteam.com/mailbucket",
+  "name": "mailbucket",
   "version": "1.0.0",
   "source": "src/index.d.ts",
   "main": "dist/index.js",
