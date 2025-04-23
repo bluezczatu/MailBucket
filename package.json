@@ -1,0 +1,36 @@
+{
+  "name": "@hckrteam.com/mailbucket",
+  "version": "1.0.0",
+  "source": "src/index.d.ts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bluezczatu/mailbucket.git"
+  },
+  "keywords": [
+    "mail",
+    "temp-mail"
+  ],
+  "files": [
+    "README.md",
+    "dist"
+  ],
+  "author": "Cemal",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bluezczatu/mailbucket/issues"
+  },
+  "homepage": "https://github.com/bluezczatu/mailbucket#readme",
+  "dependencies": {
+    "axios": "^1.8.4",
+    "cheerio": "^1.0.0",
+    "eventsource": "^2.0.2"
+  },
+  "devDependencies": {
+    "tslib": "^2.6.2",
+    "typescript": "^5.2.2"
+  },
+  "description": "An npm library that aggregates multiple APIs for creating and receiving temporary emails."
+}
