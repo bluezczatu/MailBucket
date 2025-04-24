@@ -43,9 +43,9 @@ import { MailBucket } from "mailbucket"
 async function main() {
     const client = new MailBucket();
 
-    console.log("Available providers:", client.getAvailableProviders()); // Or create using a specific provider client.createAccount(<provider>);
+    console.log("Available providers:", client.getAvailableProviders());
 
-    let accountResponse = await client.createAccount();
+    let accountResponse = await client.createAccount(); // Or create using a specific provider client.createAccount(<provider>);
 
     if (!accountResponse.success || !accountResponse.data) { console.error("Failed to create account:", accountResponse.message); return; }
     console.log(`Created Account: ${accountResponse.data.address} (Provider: ${accountResponse.data.providerName})`);
