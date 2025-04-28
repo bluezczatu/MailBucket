@@ -24,7 +24,6 @@ This library currently supports the following temporary email service APIs:
 
 *   [mail.tm](https://mail.tm)
 *   [mail.gw](https://mail.gw)
-*   [emailnator.com](https://emailnator.com)
 
 *Note: Provider availability and API stability depend on the external services themselves.*
 
