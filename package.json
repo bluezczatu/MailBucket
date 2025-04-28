@@ -1,6 +1,6 @@
 {
   "name": "mailbucket",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "source": "src/index.d.ts",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -11,7 +11,10 @@
   },
   "keywords": [
     "mail",
-    "temp-mail"
+    "temp-mail",
+    "mail.tm",
+    "mail.gw",
+    "emailnator.com"
   ],
   "files": [
     "README.md",

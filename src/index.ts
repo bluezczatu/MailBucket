@@ -1,6 +1,5 @@
 import type * as type from './types';
 import { IEmailProvider } from './providers/base.provider';
-import { EmailnatorProvider } from './providers/emailnator.provider';
 import { MailTmProvider } from './providers/mailtm.provider';
 
 export interface MailBucketConfig {
@@ -16,7 +15,6 @@ export class MailBucket {
         if (config?.providers && config.providers.length > 0) {
             config.providers.forEach(p => this.registerProvider(p));
         } else {
-            this.registerProvider(new EmailnatorProvider());
             this.registerProvider(new MailTmProvider({ baseUrl: 'https://api.mail.tm', providerName: 'mail.tm' }));
             this.registerProvider(new MailTmProvider({ baseUrl: 'https://api.mail.gw', providerName: 'mail.gw' }));
         }
